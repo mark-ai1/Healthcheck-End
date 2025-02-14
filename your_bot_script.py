@@ -1,8 +1,9 @@
 import logging
 from datetime import datetime
-import sqlite3  # This is part of Python's standard library
+import sqlite3
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
+import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
@@ -13,7 +14,10 @@ logging.basicConfig(
 )
 
 # Load configuration (use environment variables for sensitive data)
-TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+if not TOKEN:
+    raise ValueError("No Telegram bot token provided. Please set the TELEGRAM_BOT_TOKEN environment variable.")
+
 ADMIN_ROLE = "Admin"
 
 # Database connection
