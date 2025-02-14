@@ -1,6 +1,6 @@
 import logging
 from datetime import datetime
-import sqlite3
+import sqlite3  # This is part of Python's standard library
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 from telegram import Update
@@ -12,7 +12,7 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-# Load configuration (you can use environment variables for sensitive data)
+# Load configuration (use environment variables for sensitive data)
 TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 ADMIN_ROLE = "Admin"
 
